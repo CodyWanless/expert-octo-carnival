@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj" />
+    <ProjectReference Include="..\AutoRegistration.Types\AutoRegistration.Types.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="4.6.0" />
+  </ItemGroup>
+</Project>

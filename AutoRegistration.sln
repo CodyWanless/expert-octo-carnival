@@ -1,0 +1,46 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration", "src\AutoRegistration\AutoRegistration.csproj", "{1E917004-0227-4F27-B55C-E1A9EC00549E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration.Abstract", "src\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj", "{265BEBE5-E67C-4784-B896-1D05E0840594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration.SimpleInjector", "src\AutoRegistration.SimpleInjector\AutoRegistration.SimpleInjector.csproj", "{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration.Types", "src\AutoRegistration.Types\AutoRegistration.Types.csproj", "{2C391188-A253-4205-AE68-553C6D5CC08A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{86EC6956-8535-4801-8389-1887C8ECAC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests\AutoRegistration.SimpleInjector.Tests", "tests\AutoRegistration.SimpleInjector.Tests\AutoRegistration.SimpleInjector.Tests.csproj", "{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{265BEBE5-E67C-4784-B896-1D05E0840594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{265BEBE5-E67C-4784-B896-1D05E0840594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{265BEBE5-E67C-4784-B896-1D05E0840594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{265BEBE5-E67C-4784-B896-1D05E0840594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C391188-A253-4205-AE68-553C6D5CC08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C391188-A253-4205-AE68-553C6D5CC08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C391188-A253-4205-AE68-553C6D5CC08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C391188-A253-4205-AE68-553C6D5CC08A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD} = {86EC6956-8535-4801-8389-1887C8ECAC4D}
+	EndGlobalSection
+EndGlobal
