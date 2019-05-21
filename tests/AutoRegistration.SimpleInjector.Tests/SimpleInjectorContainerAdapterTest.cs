@@ -85,6 +85,28 @@ namespace AutoRegistration.SimpleInjector.Tests
             VerifyContainer(containerAdapter, new[] { (typeof(ITestComponent), typeof(TestComponentDecorator)) });
         }
 
+        [TestMethod]
+        public void Register_SingleOpenGenericType()
+        {
+            containerAdapter.Register(typeof(IRepository<>), typeof(FooRepository), Types.Scope.Transient);
+
+            VerifyContainer(containerAdapter, new[] { (typeof(IRepository<FooModel>), typeof(FooRepository)) });
+        }
+
+        [TestMethod]
+        public void Register_MultiOpenGenericType()
+        {
+            containerAdapter.Register(typeof(IRepository<>), typeof(FooRepository), Types.Scope.Transient);
+            containerAdapter.Register(typeof(IRepository<>), typeof(BarRepository), Types.Scope.Transient);
+
+            VerifyContainer(containerAdapter,
+                new[]
+                {
+                    (typeof(IRepository<FooModel>), typeof(FooRepository)),
+                    (typeof(IRepository<BarModel>), typeof(BarRepository))
+                });
+        }
+
         private static IServiceProvider VerifyContainer(IRegisterTimeContainer container,
             IEnumerable<(Type serviceType, Type runtimeType)> typesToVerify = null)
         {
