@@ -68,7 +68,6 @@ namespace AutoRegistration.Core.WebApi.SimpleInjector
             // Go through custom registrations, removing types that match
             foreach (var customConvention in customRegistrations)
             {
-                // TODO: cleanup this n^3 logic
                 var typesToRegister = new List<Type>();
                 foreach (var interfaceToRegister in customConvention.InterfacesToRegister)
                 {
