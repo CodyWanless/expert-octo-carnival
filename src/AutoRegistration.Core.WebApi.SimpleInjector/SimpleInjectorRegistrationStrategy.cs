@@ -44,37 +44,46 @@ namespace AutoRegistration.Core.WebApi.SimpleInjector
             var containerAdapter = new SimpleInjectorContainerAdapter(container);
             var autoRegistration = new TypePatternRegistrationConvention();
 
-            IReadOnlyCollection<Type> types = assemblies
+            var rawTypePairs = assemblies
                 .SelectMany(assembly =>
-                    assembly.GetExportedTypes()).ToArray();
+                    assembly.GetExportedTypes())
+                    .Where(type => !type.IsInterface)
+                    .Where(type => !type.IsAbstract)
+                    .Where(type => type.IsPublic)
+                    .Where(type => !type.IsNested)
+                    .SelectMany(type => type.GetInterfaces().Select(i => new { i, type }));
+
+            var typeDictionary = new Dictionary<Type, IList<Type>>();
+            foreach (var typePair in rawTypePairs)
+            {
+                if (!typeDictionary.ContainsKey(typePair.i))
+                {
+                    typeDictionary.Add(typePair.i, new List<Type>());
+                }
+
+                typeDictionary[typePair.i].Add(typePair.type);
+
+            }
 
             // Go through custom registrations, removing types that match
             foreach (var customConvention in customRegistrations)
             {
                 // TODO: cleanup this n^3 logic
-                var temp = new List<Type>();
                 var typesToRegister = new List<Type>();
-                foreach (var type in types)
+                foreach (var interfaceToRegister in customConvention.InterfacesToRegister)
                 {
-                    foreach (var @interface in customConvention.InterfacesToRegister)
+                    if (typeDictionary.TryGetValue(interfaceToRegister, out var types))
                     {
-                        if (type.ImplementsInterface(@interface))
-                        {
-                            typesToRegister.Add(type);
-                        }
-                        else
-                        {
-                            temp.Add(type);
-                        }
+                        typesToRegister.AddRange(types);
+                        typesToRegister.Remove(interfaceToRegister);
                     }
                 }
 
                 customConvention.Register(typesToRegister, containerAdapter);
-                types = temp;
             }
 
             // auto register left overs 
-            autoRegistration.Register(types, containerAdapter);
+            autoRegistration.Register(typeDictionary.Values.SelectMany(t => t).ToArray(), containerAdapter);
 
             return containerAdapter;
         }
