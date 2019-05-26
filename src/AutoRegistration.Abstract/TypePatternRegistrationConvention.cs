@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AutoRegistration.Abstract
 {
-    internal class TypePatternRegistrationConvention : IRegistrationConvention
+    public sealed class TypePatternRegistrationConvention : IRegistrationConvention
     {
         // This needs to be the catch all
         public IEnumerable<Type> InterfacesToRegister { get; } = Enumerable.Empty<Type>();

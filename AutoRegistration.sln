@@ -1,17 +1,19 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration", "src\AutoRegistration\AutoRegistration.csproj", "{1E917004-0227-4F27-B55C-E1A9EC00549E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRegistration.Abstract", "src\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj", "{265BEBE5-E67C-4784-B896-1D05E0840594}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration.Abstract", "src\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj", "{265BEBE5-E67C-4784-B896-1D05E0840594}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRegistration.SimpleInjector", "src\AutoRegistration.SimpleInjector\AutoRegistration.SimpleInjector.csproj", "{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration.SimpleInjector", "src\AutoRegistration.SimpleInjector\AutoRegistration.SimpleInjector.csproj", "{FC487A6C-006D-49E4-9DEA-7D36A2C520DB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\AutoRegistration.Types", "src\AutoRegistration.Types\AutoRegistration.Types.csproj", "{2C391188-A253-4205-AE68-553C6D5CC08A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRegistration.Types", "src\AutoRegistration.Types\AutoRegistration.Types.csproj", "{2C391188-A253-4205-AE68-553C6D5CC08A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{86EC6956-8535-4801-8389-1887C8ECAC4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests\AutoRegistration.SimpleInjector.Tests", "tests\AutoRegistration.SimpleInjector.Tests\AutoRegistration.SimpleInjector.Tests.csproj", "{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRegistration.SimpleInjector.Tests", "tests\AutoRegistration.SimpleInjector.Tests\AutoRegistration.SimpleInjector.Tests.csproj", "{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRegistration.Core.WebApi", "src\AutoRegistration.Core.WebApi\AutoRegistration.Core.WebApi.csproj", "{5BBC8FAE-BDEA-4B89-AF24-BCD4D8E23E23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRegistration.Core.WebApi.SimpleInjector", "src\AutoRegistration.Core.WebApi.SimpleInjector\AutoRegistration.Core.WebApi.SimpleInjector.csproj", "{6365616B-E186-4195-B8BC-C2DF66A69677}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E917004-0227-4F27-B55C-E1A9EC00549E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{265BEBE5-E67C-4784-B896-1D05E0840594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{265BEBE5-E67C-4784-B896-1D05E0840594}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{265BEBE5-E67C-4784-B896-1D05E0840594}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +37,14 @@ Global
 		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BBC8FAE-BDEA-4B89-AF24-BCD4D8E23E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBC8FAE-BDEA-4B89-AF24-BCD4D8E23E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBC8FAE-BDEA-4B89-AF24-BCD4D8E23E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBC8FAE-BDEA-4B89-AF24-BCD4D8E23E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6365616B-E186-4195-B8BC-C2DF66A69677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6365616B-E186-4195-B8BC-C2DF66A69677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6365616B-E186-4195-B8BC-C2DF66A69677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6365616B-E186-4195-B8BC-C2DF66A69677}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F3A37016-74F8-4F75-AD0E-3789E90A2DDD} = {86EC6956-8535-4801-8389-1887C8ECAC4D}
