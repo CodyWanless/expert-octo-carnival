@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AutoRegistration.Abstract
 {
-    public sealed class TypePatternRegistrationConvention : IRegistrationConvention
+    internal sealed class TypePatternRegistrationConvention : IRegistrationConvention
     {
         // This needs to be the catch all
         public IEnumerable<Type> InterfacesToRegister { get; } = Enumerable.Empty<Type>();
@@ -13,10 +13,6 @@ namespace AutoRegistration.Abstract
         public IRegisterTimeContainer Register(IReadOnlyCollection<Type> types, IRegisterTimeContainer container)
         {
             var implementationTypes = types
-                .Where(type => !type.IsInterface)
-                .Where(type => !type.IsAbstract)
-                .Where(type => type.IsPublic)
-                .Where(type => !type.IsNested)
                 .Where(type => type.GetInterfaces().Length == 1)
                 .Where(type => type.GetConstructors().Length == 1)
                 .ToArray();
