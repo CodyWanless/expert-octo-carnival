@@ -41,8 +41,7 @@ namespace AutoRegistration.Core.WebApi.SimpleInjector
 
         public IRegisterTimeContainer ConfigureContainer(IApplicationBuilder app, IReadOnlyCollection<Assembly> assemblies, IReadOnlyCollection<IRegistrationConvention> customRegistrations)
         {
-            var containerAdapter = new SimpleInjectorContainerAdapter(container);
-            var containerBuilder = ContainerBuilderFactory.CreateContainerBuilder(containerAdapter);
+            var containerBuilder = new SimpleInjectorContainerBuilder(container);
 
             return containerBuilder.BuildContainer(assemblies, customRegistrations);
         }

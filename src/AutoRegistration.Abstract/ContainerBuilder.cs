@@ -5,18 +5,12 @@ using System.Reflection;
 
 namespace AutoRegistration.Abstract
 {
-    internal sealed class ContainerBuilder : IContainerBuilder
+    public abstract class ContainerBuilder : IContainerBuilder
     {
-        private readonly IRegisterTimeContainer container;
-
-        public ContainerBuilder(IRegisterTimeContainer container)
-        {
-            this.container = container;
-        }
-
         public IRegisterTimeContainer BuildContainer(IReadOnlyCollection<Assembly> assemblies,
             IReadOnlyCollection<IRegistrationConvention> customRegistrationConventions)
         {
+            var container = CreateContainer();
             var autoRegistration = new TypePatternRegistrationConvention();
 
             var rawTypePairs = assemblies
@@ -61,5 +55,12 @@ namespace AutoRegistration.Abstract
 
             return container;
         }
+
+        public IRegisterTimeContainer BuildContainer(IReadOnlyCollection<Assembly> assemblies)
+        {
+            return BuildContainer(assemblies, new IRegistrationConvention[0]);
+        }
+
+        protected abstract IRegisterTimeContainer CreateContainer();
     }
 }

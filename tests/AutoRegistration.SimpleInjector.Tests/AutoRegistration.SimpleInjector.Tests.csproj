@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\src\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj" />
     <ProjectReference Include="..\..\src\AutoRegistration.SimpleInjector\AutoRegistration.SimpleInjector.csproj" />
     <ProjectReference Include="..\..\src\AutoRegistration.Types\AutoRegistration.Types.csproj" />
+    <ProjectReference Include="..\..\src\AutoRegistration.Core.WebApi.SimpleInjector\AutoRegistration.Core.WebApi.SimpleInjector.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestModel\" />
