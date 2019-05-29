@@ -20,30 +20,30 @@ namespace AutoRegistration.Abstract
                     .Where(type => !type.IsAbstract)
                     .Where(type => type.IsPublic)
                     .Where(type => !type.IsNested)
-                    .SelectMany(type => type.GetInterfaces().Select(i => new { i, type }));
+                    .SelectMany(type => type.GetInterfaces().Select(i => new { key = i.ToTypeKey(), type }));
 
             var typeDictionary = new Dictionary<Type, IList<Type>>();
             foreach (var typePair in rawTypePairs)
             {
-                if (!typeDictionary.ContainsKey(typePair.i))
+                if (!typeDictionary.ContainsKey(typePair.key))
                 {
-                    typeDictionary.Add(typePair.i, new List<Type>());
+                    typeDictionary.Add(typePair.key, new List<Type>());
                 }
 
-                typeDictionary[typePair.i].Add(typePair.type);
-
+                typeDictionary[typePair.key].Add(typePair.type);
             }
 
             // Go through custom registrations, removing types that match
             foreach (var customConvention in customRegistrationConventions)
             {
                 var typesToRegister = new List<Type>();
-                foreach (var interfaceToRegister in customConvention.InterfacesToRegister)
+                foreach (var interfaceToRegister in customConvention.InterfacesToRegister
+                    .Select(t => t.ToTypeKey()))
                 {
                     if (typeDictionary.TryGetValue(interfaceToRegister, out var types))
                     {
                         typesToRegister.AddRange(types);
-                        typesToRegister.Remove(interfaceToRegister);
+                        typeDictionary.Remove(interfaceToRegister);
                     }
                 }
 

@@ -22,15 +22,16 @@ namespace AutoRegistration.Abstract
                 {
                     return type.GetInterfaces().Select(i => new[]
                     {
-                        i,
+                        i.ToTypeKey(),
                         type
                     });
                 })
                 .GroupBy(pair => pair[0], pair => pair[1]);
 
-            foreach (var implementations in byInterface)
+            foreach (var registrationGroup in byInterface)
             {
-                var inter = implementations.Key;
+                var inter = registrationGroup.Key;
+                var implementations = registrationGroup.ToList();
 
                 var composites = implementations.Where(type => type.IsComposite()).ToArray();
                 var decorators = implementations.Where(type => type.IsDecorator()).ToArray();
@@ -51,7 +52,8 @@ namespace AutoRegistration.Abstract
                     var composite = composites.Single();
                     container.Register(inter, composite, GetScope(composite));
                 }
-                else if (normals.Count() == 1)
+
+                if (normals.Count() == 1)
                 {
                     var normal = normals.Single();
                     container.Register(inter, normal, GetScope(normal));
