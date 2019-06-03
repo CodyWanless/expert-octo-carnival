@@ -41,7 +41,7 @@ namespace AutoRegistration.SimpleInjector.Tests
         }
 
         [TestMethod]
-        public void CreateTestModelAssembly_ValidatorCheck()
+        public void CreateTestModelAssembly_StringValidatorCheck()
         {
             var registerTimeContainer = containerBuilder.BuildContainer(new[] { GetType().Assembly });
 
@@ -51,9 +51,28 @@ namespace AutoRegistration.SimpleInjector.Tests
             var expected = new HashSet<Type>(
                 new[]
                 {
+                    typeof(AStringValidator),
                     typeof(NullValidator<string>),
                     typeof(StringEmptyValidator),
                     typeof(TrueValidator<string>)
+                });
+
+            Assert.IsTrue(expected.SetEquals(validators.Select(v => v.GetType())));
+        }
+
+        [TestMethod]
+        public void CreateTestModelAssembly_IntValidatorCheck()
+        {
+            var registerTimeContainer = containerBuilder.BuildContainer(new[] { GetType().Assembly });
+
+            var serviceProvider = registerTimeContainer.ToRuntimeContainer();
+            var validators = (IEnumerable<IValidator<int>>)serviceProvider.GetService(typeof(IEnumerable<IValidator<int>>));
+
+            var expected = new HashSet<Type>(
+                new[]
+                {
+                    typeof(NullValidator<int>),
+                    typeof(TrueValidator<int>)
                 });
 
             Assert.IsTrue(expected.SetEquals(validators.Select(v => v.GetType())));

@@ -38,7 +38,7 @@ namespace AutoRegistration.Abstract
 
                 var normals = implementations.Except(composites).Except(decorators).ToArray();
 
-                if (composites.Count() > 1)
+                if (composites.Length > 1)
                 {
                     throw new TypePatternRegistrationException("You cannot register more than one composite.");
                 }
@@ -53,7 +53,7 @@ namespace AutoRegistration.Abstract
                     container.Register(inter, composite, GetScope(composite));
                 }
 
-                if (normals.Count() == 1)
+                if (normals.Length == 1)
                 {
                     var normal = normals.Single();
                     container.Register(inter, normal, GetScope(normal));
