@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AutoRegistration.Abstract
 {
-    internal class TypePatternRegistrationConvention : IRegistrationConvention
+    internal sealed class TypePatternRegistrationConvention : IRegistrationConvention
     {
         // This needs to be the catch all
         public IEnumerable<Type> InterfacesToRegister { get; } = Enumerable.Empty<Type>();
@@ -13,10 +13,6 @@ namespace AutoRegistration.Abstract
         public IRegisterTimeContainer Register(IReadOnlyCollection<Type> types, IRegisterTimeContainer container)
         {
             var implementationTypes = types
-                .Where(type => !type.IsInterface)
-                .Where(type => !type.IsAbstract)
-                .Where(type => type.IsPublic)
-                .Where(type => !type.IsNested)
                 .Where(type => type.GetInterfaces().Length == 1)
                 .Where(type => type.GetConstructors().Length == 1)
                 .ToArray();
@@ -26,22 +22,23 @@ namespace AutoRegistration.Abstract
                 {
                     return type.GetInterfaces().Select(i => new[]
                     {
-                        i,
+                        i.ToTypeKey(),
                         type
                     });
                 })
                 .GroupBy(pair => pair[0], pair => pair[1]);
 
-            foreach (var implementations in byInterface)
+            foreach (var registrationGroup in byInterface)
             {
-                var inter = implementations.Key;
+                var inter = registrationGroup.Key;
+                var implementations = registrationGroup.ToList();
 
                 var composites = implementations.Where(type => type.IsComposite()).ToArray();
                 var decorators = implementations.Where(type => type.IsDecorator()).ToArray();
 
                 var normals = implementations.Except(composites).Except(decorators).ToArray();
 
-                if (composites.Count() > 1)
+                if (composites.Length > 1)
                 {
                     throw new TypePatternRegistrationException("You cannot register more than one composite.");
                 }
@@ -55,7 +52,8 @@ namespace AutoRegistration.Abstract
                     var composite = composites.Single();
                     container.Register(inter, composite, GetScope(composite));
                 }
-                else if (normals.Count() == 1)
+
+                if (normals.Length == 1)
                 {
                     var normal = normals.Single();
                     container.Register(inter, normal, GetScope(normal));

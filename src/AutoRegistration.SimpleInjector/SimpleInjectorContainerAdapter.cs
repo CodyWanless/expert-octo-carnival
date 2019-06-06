@@ -23,7 +23,18 @@ namespace AutoRegistration.SimpleInjector
 
         public IRegisterTimeContainer RegisterAll(Type service, System.Collections.Generic.IEnumerable<(Type type, Types.Scope scope)> implementations)
         {
-            container.Collection.Register(service, implementations.Select(impl => impl.type));
+            if (service.IsOpenGeneric())
+            {
+                foreach (var impl in implementations)
+                {
+                    container.Collection.Append(service, impl.type.ToTypeKey());
+                }
+            }
+            else
+            {
+                container.Collection.Register(service,
+                    implementations.Select(impl => ConvertLifetime(impl.scope).CreateRegistration(impl.type, container)));
+            }
 
             return this;
         }

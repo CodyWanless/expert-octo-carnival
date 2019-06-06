@@ -6,7 +6,10 @@ namespace AutoRegistration.Abstract
 {
     public static class TypeExtensions
     {
-        public static Type ToTypeKey(this Type type) => type.IsOpenGeneric() ? type.GetGenericTypeDefinition() : type;
+        public static Type ToTypeKey(this Type type)
+        {
+            return type.IsOpenGeneric() ? type.GetGenericTypeDefinition() : type;
+        }
 
         public static bool ImplementsInterface(this Type type, Type parentType) => parentType.IsInterface
                                                                                    && (parentType.IsAssignableFrom(type)
