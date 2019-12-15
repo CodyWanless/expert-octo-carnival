@@ -11,6 +11,6 @@
     <ProjectReference Include="..\AutoRegistration.Types\AutoRegistration.Types.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SimpleInjector" Version="4.6.0" />
+    <PackageReference Include="SimpleInjector" Version="4.8.1" />
   </ItemGroup>
 </Project>
