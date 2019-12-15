@@ -4,7 +4,7 @@ using SimpleInjector;
 
 namespace AutoRegistration.Core.WebApi.SimpleInjector
 {
-    public sealed class SimpleInjectorContainerBuilder : ContainerBuilder
+    internal sealed class SimpleInjectorContainerBuilder : ContainerBuilder
     {
         private readonly Container container;
 

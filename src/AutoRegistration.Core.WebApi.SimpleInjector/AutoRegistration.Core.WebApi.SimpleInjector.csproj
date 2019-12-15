@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.2.0</PackageVersion>
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <PackageVersion>1.0.3.0</PackageVersion>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoRegistration.Core.WebApi\AutoRegistration.Core.WebApi.csproj" />

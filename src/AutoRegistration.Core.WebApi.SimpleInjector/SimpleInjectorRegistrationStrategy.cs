@@ -22,6 +22,7 @@ namespace AutoRegistration.Core.WebApi.SimpleInjector
         public SimpleInjectorRegistrationStrategy()
         {
             this.container = new Container();
+            this.container.Options.ResolveUnregisteredConcreteTypes = false;
         }
 
         public void IntegrateContainer(IServiceCollection services)
@@ -33,9 +34,7 @@ namespace AutoRegistration.Core.WebApi.SimpleInjector
                     // Ensure activation of a specific framework type to be created by
                     // Simple Injector instead of the built-in configuration system.
                     .AddControllerActivation()
-                    .AddViewComponentActivation()
-                    .AddPageModelActivation()
-                    .AddTagHelperActivation();
+                    .AddViewComponentActivation();
             });
         }
 
