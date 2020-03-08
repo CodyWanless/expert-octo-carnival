@@ -8,6 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoRegistration.Types\AutoRegistration.Types.csproj" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
   </ItemGroup>
 </Project>
