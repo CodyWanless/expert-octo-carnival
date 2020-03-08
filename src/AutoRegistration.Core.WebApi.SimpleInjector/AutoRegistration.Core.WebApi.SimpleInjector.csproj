@@ -1,22 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.3.0</PackageVersion>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutoRegistration.Core.WebApi\AutoRegistration.Core.WebApi.csproj" />
-    <ProjectReference Include="..\AutoRegistration.SimpleInjector\AutoRegistration.SimpleInjector.csproj" />
-    <ProjectReference Include="..\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="SimpleInjector" Version="4.9.1" />
-    <PackageReference Include="SimpleInjector.Integration.AspNetCore" Version="4.9.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
-    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.9.1" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<PackageVersion>1.0.4.0</PackageVersion>
+		<AssemblyVersion>1.0.4.0</AssemblyVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\AutoRegistration.Core.WebApi\AutoRegistration.Core.WebApi.csproj" />
+		<ProjectReference Include="..\AutoRegistration.SimpleInjector\AutoRegistration.SimpleInjector.csproj" />
+		<ProjectReference Include="..\AutoRegistration.Abstract\AutoRegistration.Abstract.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="SimpleInjector" Version="4.9.1" />
+		<PackageReference Include="SimpleInjector.Integration.AspNetCore" Version="4.9.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
+		<PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.9.1" />
+	</ItemGroup>
 </Project>

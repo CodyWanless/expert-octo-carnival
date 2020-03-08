@@ -5,7 +5,7 @@ using SimpleInjector;
 
 namespace AutoRegistration.SimpleInjector
 {
-    public class SimpleInjectorContainerAdapter : IRegisterTimeContainer
+    internal sealed class SimpleInjectorContainerAdapter : IRegisterTimeContainer
     {
         private readonly Container container;
 
